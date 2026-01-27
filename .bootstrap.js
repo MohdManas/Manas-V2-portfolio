@@ -77,7 +77,10 @@ function updateWranglerJsonc() {
 }
 
 function runSetupCommands() {
-    const commands = [];
+    const commands = [
+    "bun add react-scroll@^1.9.0",
+    "bun add simple-icons@^8.9.0"
+];
     
     if (commands.length === 0) {
         console.log('⊘ No setup commands to run');
