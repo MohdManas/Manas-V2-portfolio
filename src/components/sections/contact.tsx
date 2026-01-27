@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Phone, Send, MapPin } from 'lucide-react';
+import { Mail, Github, Linkedin, Phone, Send, MapPin, ExternalLink } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -25,74 +25,57 @@ export function Contact() {
     try {
       console.log('Form submission:', data);
       await new Promise(resolve => setTimeout(resolve, 1500));
-      toast.success("Message sent! I'll get back to you soon.");
+      toast.success("Message sent successfully!");
       reset();
     } catch (error) {
-      console.error('Contact form error:', error);
-      toast.error("Failed to send message. Please try again later.");
+      toast.error("Something went wrong. Please try again.");
     }
   };
   return (
-    <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <SectionHeading
         title="Get In Touch"
-        subtitle="Ready to discuss your next project or role? Contact me directly via email or phone."
+        subtitle="I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions."
       />
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mt-8">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
+          className="lg:col-span-5 space-y-10"
         >
-          <div className="space-y-8">
-            <h3 className="text-2xl font-bold">Contact Information</h3>
-            <div className="space-y-6">
-              <a href={`mailto:${resumeData.profile.email}`} className="flex items-center gap-5 group">
-                <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <div className="text-xs text-muted-foreground uppercase font-bold tracking-widest">Email</div>
-                  <div className="font-semibold text-lg">{resumeData.profile.email}</div>
-                </div>
-              </a>
-              <a href={`tel:${resumeData.profile.phone.replace(/\s/g, '')}`} className="flex items-center gap-5 group">
-                <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <div className="text-xs text-muted-foreground uppercase font-bold tracking-widest">Phone</div>
-                  <div className="font-semibold text-lg">{resumeData.profile.phone}</div>
-                </div>
-              </a>
-              <div className="flex items-center gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center text-muted-foreground shadow-sm">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <div className="text-xs text-muted-foreground uppercase font-bold tracking-widest">Location</div>
-                  <div className="font-semibold text-lg">{resumeData.profile.location}</div>
-                </div>
+          <div className="space-y-6">
+            <h3 className="text-3xl font-bold tracking-tight">Let's connect.</h3>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+          </div>
+          <div className="space-y-6">
+            <a href={`mailto:${resumeData.profile.email}`} className="flex items-center gap-6 group p-4 rounded-2xl hover:bg-secondary/50 transition-all border border-transparent hover:border-border">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Mail size={24} />
               </div>
-              <div className="flex gap-4 pt-4">
-                <a
-                  href={resumeData.socials.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm"
-                  aria-label="GitHub"
-                >
-                  <Github size={22} />
-                </a>
-                <a
-                  href={resumeData.socials.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-sm"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={22} />
-                </a>
+              <div>
+                <div className="text-xs text-muted-foreground font-bold uppercase tracking-widest mb-1">Email Me</div>
+                <div className="font-bold text-lg">{resumeData.profile.email}</div>
+              </div>
+            </a>
+            <a href={`tel:${resumeData.profile.phone.replace(/\s/g, '')}`} className="flex items-center gap-6 group p-4 rounded-2xl hover:bg-secondary/50 transition-all border border-transparent hover:border-border">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Phone size={24} />
+              </div>
+              <div>
+                <div className="text-xs text-muted-foreground font-bold uppercase tracking-widest mb-1">Call Me</div>
+                <div className="font-bold text-lg">{resumeData.profile.phone}</div>
+              </div>
+            </a>
+            <div className="flex items-center gap-6 p-4">
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+                <MapPin size={24} />
+              </div>
+              <div>
+                <div className="text-xs text-muted-foreground font-bold uppercase tracking-widest mb-1">Based in</div>
+                <div className="font-bold text-lg">{resumeData.profile.location}</div>
               </div>
             </div>
           </div>
@@ -101,55 +84,93 @@ export function Contact() {
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="bg-card border border-border/60 rounded-[2rem] p-10 shadow-soft"
+          className="lg:col-span-7 bg-card border border-border/60 rounded-[2.5rem] p-8 md:p-12 shadow-2xl"
         >
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-sm font-semibold">Name</label>
+          <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-2 col-span-2 sm:col-span-1">
+              <label className="text-xs font-bold uppercase tracking-widest ml-1">Name</label>
               <Input
                 {...register("name")}
-                placeholder="Your name"
+                placeholder="John Doe"
                 className={cn(
-                  "bg-secondary/50 border-transparent focus:border-primary transition-colors",
-                  errors.name && "border-destructive focus:border-destructive"
+                  "h-14 bg-secondary/30 border-border/50 focus:bg-background transition-all rounded-xl",
+                  errors.name && "border-destructive focus:ring-destructive"
                 )}
               />
-              {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
+              {errors.name && <p className="text-[10px] text-destructive font-bold uppercase ml-1">{errors.name.message}</p>}
             </div>
-            <div className="space-y-2">
-              <label className="text-sm font-semibold">Email</label>
+            <div className="space-y-2 col-span-2 sm:col-span-1">
+              <label className="text-xs font-bold uppercase tracking-widest ml-1">Email</label>
               <Input
                 {...register("email")}
-                placeholder="Your email address"
+                placeholder="john@example.com"
                 className={cn(
-                  "bg-secondary/50 border-transparent focus:border-primary transition-colors",
-                  errors.email && "border-destructive focus:border-destructive"
+                  "h-14 bg-secondary/30 border-border/50 focus:bg-background transition-all rounded-xl",
+                  errors.email && "border-destructive focus:ring-destructive"
                 )}
               />
-              {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
+              {errors.email && <p className="text-[10px] text-destructive font-bold uppercase ml-1">{errors.email.message}</p>}
             </div>
-            <div className="space-y-2">
-              <label className="text-sm font-semibold">Message</label>
+            <div className="space-y-2 col-span-2">
+              <label className="text-xs font-bold uppercase tracking-widest ml-1">Message</label>
               <Textarea
                 {...register("message")}
-                placeholder="Tell me about your project..."
+                placeholder="Hi, I'd like to talk about..."
                 rows={5}
                 className={cn(
-                  "bg-secondary/50 border-transparent focus:border-primary resize-none transition-colors",
-                  errors.message && "border-destructive focus:border-destructive"
+                  "bg-secondary/30 border-border/50 focus:bg-background transition-all rounded-xl resize-none",
+                  errors.message && "border-destructive focus:ring-destructive"
                 )}
               />
-              {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
+              {errors.message && <p className="text-[10px] text-destructive font-bold uppercase ml-1">{errors.message.message}</p>}
             </div>
-            <Button type="submit" className="w-full btn-gradient py-7 text-lg" disabled={isSubmitting}>
+            <Button type="submit" className="col-span-2 h-14 btn-gradient text-lg font-bold rounded-xl mt-2" disabled={isSubmitting}>
               {isSubmitting ? "Sending..." : "Send Message"}
               <Send className="ml-2 h-5 w-5" />
             </Button>
           </form>
         </motion.div>
       </div>
-      <footer className="mt-32 pt-10 border-t border-border/40 text-center">
-        <p className="text-muted-foreground text-sm">© {new Date().getFullYear()} {resumeData.profile.name}. Designed & Built with Precision.</p>
+      <footer className="mt-24 pt-12 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="text-center md:text-left">
+          <p className="text-foreground font-bold text-lg mb-1">{resumeData.profile.name}</p>
+          <p className="text-muted-foreground text-sm font-medium italic">Full-Stack Developer & IT Officer</p>
+        </div>
+        <div className="flex items-center gap-4">
+          <a
+            href={resumeData.socials.github}
+            target="_blank"
+            rel="noreferrer"
+            className="w-11 h-11 rounded-xl bg-secondary flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+            aria-label="GitHub"
+          >
+            <Github size={20} />
+          </a>
+          <a
+            href={resumeData.socials.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="w-11 h-11 rounded-xl bg-secondary flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={20} />
+          </a>
+          <a
+            href={`mailto:${resumeData.socials.email}`}
+            className="w-11 h-11 rounded-xl bg-secondary flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+            aria-label="Email"
+          >
+            <Mail size={20} />
+          </a>
+        </div>
+        <div className="flex flex-col items-center md:items-end gap-2">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] font-bold uppercase tracking-widest text-primary">
+            Built with React & Tailwind CSS
+          </div>
+          <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-tighter">
+            © {new Date().getFullYear()} • Dubai, UAE
+          </p>
+        </div>
       </footer>
     </section>
   );

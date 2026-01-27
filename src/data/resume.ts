@@ -8,7 +8,6 @@ export const resumeData = {
     email: "mohamedmanas2306@gmail.com",
     phone: "+971 50 204 4687",
     yearsOfExperience: "3+",
-    portfolio: "https://mohdmanasportfolio.netlify.app",
   },
   experience: [
     {
@@ -49,36 +48,33 @@ export const resumeData = {
   projects: [
     {
       title: "Three Keys Consulting",
-      tech: ["React", "Node.js", "Firebase", "Tailwind CSS"],
+      tech: ["React", "Node.js", "Firebase", "Tailwind CSS", "JavaScript"],
       description: "Project Management and Consulting Portal.",
       bullets: [
         "Developed a comprehensive project management tool tailored for industry-specific workflows.",
         "Implemented secure authentication and real-time data updates using Firebase.",
-        "Designed a clean, intuitive UI focused on user productivity and task tracking.",
         "Optimized frontend performance to handle large datasets and complex project views."
       ],
+      github: "https://github.com/MOhdManas/ThreeKeys",
       link: "https://github.com/MOhdManas",
     },
     {
       title: "Tamil Agarathi",
-      tech: ["React Native", "SQLite", "Node.js"],
+      tech: ["React Native", "SQLite", "Node.js", "Express", "Android"],
       description: "Mobile Dictionary Application for Tamil Language.",
       bullets: [
         "Engineered a fast, offline-first dictionary application for mobile users.",
         "Utilized SQLite for high-performance local data querying and storage.",
-        "Implemented smooth navigation and search features for an enhanced learning experience.",
-        "Built a robust backend synchronization layer for content updates."
+        "Implemented smooth navigation and search features for an enhanced learning experience."
       ],
+      github: "https://github.com/MOhdManas/TamilAgarathi",
       link: "https://github.com/MOhdManas",
     },
   ],
   skills: [
-    "React.js", "React Native", "Next.js", "JavaScript", "TypeScript", "WordPress", 
-    "HTML", "CSS", "Responsive Web Design", "Figma", "Tailwind CSS", "Bootstrap", 
-    "Material UI", "Ant Design", "UI/UX Design", "Node.js", "PHP", "REST/Web APIs", 
-    "JSON", "third-party payment and email integrations", "AI/LLM API integrations", 
-    "MySQL Server", "MongoDB", "cPanel", "Remote Desktop (RDP)", "Git", "GitHub", 
-    "VS Code", "Postman", "Manual Testing"
+    "React.js", "React Native", "Next.js", "JavaScript", "TypeScript", "WordPress",
+    "HTML", "CSS", "Tailwind CSS", "Bootstrap", "Node.js", "PHP", "MySQL Server", 
+    "MongoDB", "cPanel", "Git", "GitHub", "Postman", "Figma"
   ],
   education: [
     {
@@ -99,5 +95,6 @@ export const resumeData = {
   socials: {
     github: "https://github.com/MOhdManas",
     linkedin: "https://linkedin.com/in/mohammed-manas-5692061ba",
+    email: "mohamedmanas2306@gmail.com",
   },
 };
