@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Phone, Send, MapPin, ExternalLink } from 'lucide-react';
+import { Mail, Github, Linkedin, Phone, Send, MapPin } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,6 +20,11 @@ type ContactForm = z.infer<typeof contactSchema>;
 export function Contact() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: ""
+    }
   });
   const onSubmit = async (data: ContactForm) => {
     try {
@@ -28,6 +33,7 @@ export function Contact() {
       toast.success("Message sent successfully!");
       reset();
     } catch (error) {
+      console.error('Contact form error:', error);
       toast.error("Something went wrong. Please try again.");
     }
   };
@@ -57,7 +63,7 @@ export function Contact() {
               </div>
               <div>
                 <div className="text-xs text-muted-foreground font-bold uppercase tracking-widest mb-1">Email Me</div>
-                <div className="font-bold text-lg">{resumeData.profile.email}</div>
+                <div className="font-bold text-lg break-all">{resumeData.profile.email}</div>
               </div>
             </a>
             <a href={`tel:${resumeData.profile.phone.replace(/\s/g, '')}`} className="flex items-center gap-6 group p-4 rounded-2xl hover:bg-secondary/50 transition-all border border-transparent hover:border-border">
@@ -92,6 +98,7 @@ export function Contact() {
               <Input
                 {...register("name")}
                 placeholder="John Doe"
+                disabled={isSubmitting}
                 className={cn(
                   "h-14 bg-secondary/30 border-border/50 focus:bg-background transition-all rounded-xl",
                   errors.name && "border-destructive focus:ring-destructive"
@@ -104,6 +111,7 @@ export function Contact() {
               <Input
                 {...register("email")}
                 placeholder="john@example.com"
+                disabled={isSubmitting}
                 className={cn(
                   "h-14 bg-secondary/30 border-border/50 focus:bg-background transition-all rounded-xl",
                   errors.email && "border-destructive focus:ring-destructive"
@@ -117,6 +125,7 @@ export function Contact() {
                 {...register("message")}
                 placeholder="Hi, I'd like to talk about..."
                 rows={5}
+                disabled={isSubmitting}
                 className={cn(
                   "bg-secondary/30 border-border/50 focus:bg-background transition-all rounded-xl resize-none",
                   errors.message && "border-destructive focus:ring-destructive"

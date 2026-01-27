@@ -3,32 +3,32 @@ import { motion } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { resumeData } from '@/data/resume';
 import { 
-  SiReact, SiJavascript, SiTypescript, SiNextdotjs, 
-  SiWordpress, SiHtml5, SiCss3, SiTailwindcss, 
-  SiBootstrap, SiNodedotjs, SiPhp, SiMysql, 
-  SiMongodb, SiGithub, SiPostman, SiFigma 
+  siReact, siJavascript, siTypescript, siNextdotjs, 
+  siWordpress, siHtml5, siCss3, siTailwindcss, 
+  siBootstrap, siNodedotjs, siPhp, siMysql, 
+  siMongodb, siGithub, siPostman, siFigma 
 } from 'simple-icons';
-import { Server, Code, Terminal, Settings } from 'lucide-react';
+import { Code, Terminal, Settings } from 'lucide-react';
 const iconMap: Record<string, any> = {
-  "React.js": { icon: SiReact, color: "#61DAFB" },
-  "React Native": { icon: SiReact, color: "#61DAFB" },
-  "Next.js": { icon: SiNextdotjs, color: "#000000" },
-  "JavaScript": { icon: SiJavascript, color: "#F7DF1E" },
-  "TypeScript": { icon: SiTypescript, color: "#3178C6" },
-  "WordPress": { icon: SiWordpress, color: "#21759B" },
-  "HTML": { icon: SiHtml5, color: "#E34F26" },
-  "CSS": { icon: SiCss3, color: "#1572B6" },
-  "Tailwind CSS": { icon: SiTailwindcss, color: "#06B6D4" },
-  "Bootstrap": { icon: SiBootstrap, color: "#7952B3" },
-  "Node.js": { icon: SiNodedotjs, color: "#339933" },
-  "PHP": { icon: SiPhp, color: "#777BB4" },
-  "MySQL Server": { icon: SiMysql, color: "#4479A1" },
-  "MongoDB": { icon: SiMongodb, color: "#47A248" },
+  "React.js": { icon: siReact, color: "#61DAFB" },
+  "React Native": { icon: siReact, color: "#61DAFB" },
+  "Next.js": { icon: siNextdotjs, color: "#000000" },
+  "JavaScript": { icon: siJavascript, color: "#F7DF1E" },
+  "TypeScript": { icon: siTypescript, color: "#3178C6" },
+  "WordPress": { icon: siWordpress, color: "#21759B" },
+  "HTML": { icon: siHtml5, color: "#E34F26" },
+  "CSS": { icon: siCss3, color: "#1572B6" },
+  "Tailwind CSS": { icon: siTailwindcss, color: "#06B6D4" },
+  "Bootstrap": { icon: siBootstrap, color: "#7952B3" },
+  "Node.js": { icon: siNodedotjs, color: "#339933" },
+  "PHP": { icon: siPhp, color: "#777BB4" },
+  "MySQL Server": { icon: siMysql, color: "#4479A1" },
+  "MongoDB": { icon: siMongodb, color: "#47A248" },
   "cPanel": { icon: Settings, color: "#FF6C2C" },
   "Git": { icon: Code, color: "#F05032" },
-  "GitHub": { icon: SiGithub, color: "#181717" },
-  "Postman": { icon: SiPostman, color: "#FF6C37" },
-  "Figma": { icon: SiFigma, color: "#F24E1E" }
+  "GitHub": { icon: siGithub, color: "#181717" },
+  "Postman": { icon: siPostman, color: "#FF6C37" },
+  "Figma": { icon: siFigma, color: "#F24E1E" }
 };
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -57,11 +57,7 @@ export function Skills() {
       >
         {resumeData.skills.map((skill) => {
           const config = iconMap[skill] || { icon: Terminal, color: "currentColor" };
-          const Icon = config.icon.path ? (props: any) => (
-            <svg role="img" viewBox="0 0 24 24" fill="currentColor" {...props}>
-              <path d={config.icon.path} />
-            </svg>
-          ) : config.icon;
+          const isSimpleIcon = !!config.icon.path;
           return (
             <motion.div 
               key={skill} 
@@ -74,12 +70,17 @@ export function Skills() {
                   className="w-12 h-12 mb-4 transition-all duration-300 group-hover:scale-110 flex items-center justify-center"
                   style={{ color: config.color }}
                 >
-                  <Icon className="w-full h-full" />
+                  {isSimpleIcon ? (
+                    <svg role="img" viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
+                      <path d={config.icon.path} />
+                    </svg>
+                  ) : (
+                    <config.icon className="w-full h-full" />
+                  )}
                 </div>
                 <span className="text-xs font-bold text-muted-foreground group-hover:text-foreground transition-colors text-center tracking-wide">
                   {skill}
                 </span>
-                {/* Glow effect on hover */}
                 <div 
                   className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none"
                   style={{ backgroundColor: config.color }}
