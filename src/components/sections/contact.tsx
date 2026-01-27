@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { toast } from 'sonner';
+import { cn } from '@/lib/utils';
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Invalid email address"),
@@ -21,10 +22,15 @@ export function Contact() {
     resolver: zodResolver(contactSchema),
   });
   const onSubmit = async (data: ContactForm) => {
-    console.log(data);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    toast.success("Message sent! I'll get back to you soon.");
-    reset();
+    try {
+      console.log('Form submission:', data);
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      toast.success("Message sent! I'll get back to you soon.");
+      reset();
+    } catch (error) {
+      console.error('Contact form error:', error);
+      toast.error("Failed to send message. Please try again later.");
+    }
   };
   return (
     <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -103,7 +109,10 @@ export function Contact() {
               <Input
                 {...register("name")}
                 placeholder="Your name"
-                className={cn("bg-secondary/50 border-transparent focus:border-primary", errors.name && "border-destructive")}
+                className={cn(
+                  "bg-secondary/50 border-transparent focus:border-primary transition-colors",
+                  errors.name && "border-destructive focus:border-destructive"
+                )}
               />
               {errors.name && <p className="text-xs text-destructive">{errors.name.message}</p>}
             </div>
@@ -112,7 +121,10 @@ export function Contact() {
               <Input
                 {...register("email")}
                 placeholder="Your email address"
-                className={cn("bg-secondary/50 border-transparent focus:border-primary", errors.email && "border-destructive")}
+                className={cn(
+                  "bg-secondary/50 border-transparent focus:border-primary transition-colors",
+                  errors.email && "border-destructive focus:border-destructive"
+                )}
               />
               {errors.email && <p className="text-xs text-destructive">{errors.email.message}</p>}
             </div>
@@ -122,7 +134,10 @@ export function Contact() {
                 {...register("message")}
                 placeholder="Tell me about your project..."
                 rows={5}
-                className={cn("bg-secondary/50 border-transparent focus:border-primary resize-none", errors.message && "border-destructive")}
+                className={cn(
+                  "bg-secondary/50 border-transparent focus:border-primary resize-none transition-colors",
+                  errors.message && "border-destructive focus:border-destructive"
+                )}
               />
               {errors.message && <p className="text-xs text-destructive">{errors.message.message}</p>}
             </div>
