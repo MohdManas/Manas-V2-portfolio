@@ -2,7 +2,7 @@
 
 A modern, performant portfolio website built with React, Tailwind CSS, and shadcn/ui components. Fullstack application powered by Cloudflare Workers for API routes, with seamless deployment to Cloudflare Pages.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/MohdManas/Manas-V2-portfolio)
 
 ## Features
 
@@ -115,7 +115,7 @@ Or manually:
 
 Configuration is in `wrangler.jsonc`. Assets are served as SPA with API proxying.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/MohdManas/Manas-V2-portfolio)
 
 ## Local Worker Development
 
