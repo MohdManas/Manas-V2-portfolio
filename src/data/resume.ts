@@ -8,8 +8,8 @@ export const resumeData = {
     email: "mohamedmanas2306@gmail.com",
     phone: "+971 50 204 4687",
     yearsOfExperience: "3+",
-    /* 
-       Note: To use a local image, place your file at public/images/profile.jpg 
+    /*
+       Note: To use a local image, place your file at public/images/profile.jpg
        and change this value to "/images/profile.jpg"
     */
     image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=800&auto=format&fit=crop",
@@ -19,7 +19,7 @@ export const resumeData = {
       role: "IT Officer",
       company: "Sky Links Capital Groups",
       location: "Dubai, UAE",
-      date: "January 2025 �� Present",
+      date: "January 2025 – Present",
       description: [
         "Manage and maintain company IT infrastructure, including servers, networks, and hardware.",
         "Oversee software systems and ensure they are up-to-date and functioning optimally.",

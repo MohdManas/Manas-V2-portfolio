@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { resumeData } from '@/data/resume';
 const navLinks = [
   { name: 'Home', href: 'hero' },
   { name: 'About', href: 'about' },
@@ -25,7 +24,7 @@ export function Navbar() {
     if (element) {
       const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      const offsetPosition = elementPosition + window.scrollY - offset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -39,14 +38,14 @@ export function Navbar() {
       animate={{ y: 0 }}
       className={cn(
         "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 px-4",
-        isScrolled 
-          ? "bg-background/40 backdrop-blur-lg border-b border-border/50 py-3" 
+        isScrolled
+          ? "bg-background/80 backdrop-blur-lg border-b border-border/50 py-3"
           : "bg-transparent py-5"
       )}
     >
       <nav className="max-w-6xl mx-auto flex items-center justify-between">
-        <div 
-          className="flex items-center gap-2 cursor-pointer group" 
+        <div
+          className="flex items-center gap-2 cursor-pointer group"
           onClick={() => scrollTo('hero')}
         >
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center font-bold text-primary-foreground shadow-glow group-hover:scale-105 transition-transform duration-300">
@@ -54,7 +53,6 @@ export function Navbar() {
           </div>
           <span className="font-bold text-lg tracking-tight hidden sm:block">MANAS</span>
         </div>
-        {/* Desktop Nav - Centered items feel cleaner */}
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <button
@@ -68,15 +66,14 @@ export function Navbar() {
           ))}
         </div>
         <div className="flex items-center gap-4">
-          <Button 
-            size="sm" 
+          <Button
+            size="sm"
             variant="default"
-            className="hidden md:flex font-bold px-5 rounded-full" 
+            className="hidden md:flex font-bold px-5 rounded-full"
             onClick={() => scrollTo('contact')}
           >
             Hire Me
           </Button>
-          {/* Mobile Toggle */}
           <div className="flex items-center md:hidden">
             <button
               className="p-2 text-foreground focus:outline-none"
@@ -88,7 +85,6 @@ export function Navbar() {
           </div>
         </div>
       </nav>
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div

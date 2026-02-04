@@ -9,7 +9,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-mesh opacity-10 dark:opacity-20 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Profile Image Column - Circular Modern Aesthetic */}
+          {/* Profile Image Column */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -18,7 +18,7 @@ export function Hero() {
           >
             <div className="relative group">
               <div className="absolute -inset-2 bg-gradient-primary rounded-full blur-xl opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
-              <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-full overflow-hidden border-4 border-background/50 shadow-2xl backdrop-blur-sm">
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-background/50 shadow-2xl backdrop-blur-sm">
                 <img
                   src={resumeData.profile.image}
                   alt={`${resumeData.profile.name} - Full-Stack Developer`}
@@ -43,10 +43,10 @@ export function Hero() {
               <Briefcase size={14} className="mr-2" />
               Available for new opportunities
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]">
               Crafting <span className="text-gradient">Digital Experiences</span> that Matter
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 leading-relaxed mx-auto lg:mx-0">
               Hi, I'm <span className="text-foreground font-semibold">{resumeData.profile.name}</span>.
               A Full-Stack Developer & IT Officer dedicated to building high-performance
               applications and robust infrastructure.
@@ -54,16 +54,16 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
               <Button
                 size="lg"
-                className="btn-gradient w-full sm:w-auto px-10 h-14 rounded-2xl text-lg font-bold shadow-xl"
+                className="btn-gradient w-full sm:w-auto px-10 h-14 rounded-2xl text-lg font-bold shadow-xl group"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 View Projects
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto h-14 px-10 rounded-2xl text-lg font-bold border-2 hover:bg-secondary transition-all"
+                className="w-full sm:w-auto h-14 px-10 rounded-2xl text-lg font-bold border-2 border-primary/20 hover:bg-secondary hover:border-primary/40 transition-all"
               >
                 Download CV
                 <Download className="ml-2 h-5 w-5" />
