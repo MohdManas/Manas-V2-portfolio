@@ -8,13 +8,18 @@ export const resumeData = {
     email: "mohamedmanas2306@gmail.com",
     phone: "+971 50 204 4687",
     yearsOfExperience: "3+",
+    /* 
+       Note: To use a local image, place your file at public/images/profile.jpg 
+       and change this value to "/images/profile.jpg"
+    */
+    image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=800&auto=format&fit=crop",
   },
   experience: [
     {
       role: "IT Officer",
       company: "Sky Links Capital Groups",
       location: "Dubai, UAE",
-      date: "January 2025 – Present",
+      date: "January 2025 �� Present",
       description: [
         "Manage and maintain company IT infrastructure, including servers, networks, and hardware.",
         "Oversee software systems and ensure they are up-to-date and functioning optimally.",
@@ -73,7 +78,7 @@ export const resumeData = {
   ],
   skills: [
     "React.js", "React Native", "Next.js", "JavaScript", "TypeScript", "WordPress",
-    "HTML", "CSS", "Tailwind CSS", "Bootstrap", "Node.js", "PHP", "MySQL Server", 
+    "HTML", "CSS", "Tailwind CSS", "Bootstrap", "Node.js", "PHP", "MySQL Server",
     "MongoDB", "cPanel", "Git", "GitHub", "Postman", "Figma"
   ],
   education: [
